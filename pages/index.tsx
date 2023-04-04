@@ -5,8 +5,8 @@ import Link from "next/link";
 import cn from "classnames";
 import type { NextPage } from "next";
 
+import { Loader } from "../components/Loader";
 import { useBingSearch } from "../utils/useBingSearch";
-import { Loader } from "./components/Loader";
 
 import s from "../styles/Home.module.scss";
 
