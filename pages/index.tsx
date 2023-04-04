@@ -12,7 +12,7 @@ import s from "../styles/Home.module.scss";
 
 const Home: NextPage = () => {
   const [query, setQuery] = useState<string>("");
-  const { data: results, isLoading } = useBingSearch(query);
+  const { data: results, isLoading, error } = useBingSearch(query);
 
   const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,7 +43,22 @@ const Home: NextPage = () => {
             <button className="rounded-full">Search</button>
           </form>
         </div>
+        {error && (
+          <div className="p-3 my-4 bg-red-400 text-white">
+            {error.code === 429
+              ? `${error.message}, try in one minute again...`
+              : "Error, try again..."}
+          </div>
+        )}
         <div className="not-prose relative">
+          {results?.length === 0 && (
+            <div>
+              <p>
+                There are no results for <strong>{query}</strong>
+              </p>
+              <p>Check your spelling or try different keywords</p>
+            </div>
+          )}
           {results && (
             <ol className={cn("not-prose", s.resultList)}>
               {results.map(result => (
