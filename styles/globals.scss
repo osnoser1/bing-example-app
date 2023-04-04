@@ -1,4 +1,15 @@
 @tailwind base;
+
+@layer base {
+  button {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-4 rounded-full shadow-sm;
+  }
+
+  a {
+    color: #4007a2;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -11,7 +22,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
